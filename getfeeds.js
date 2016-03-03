@@ -3,7 +3,7 @@ var graph= require('fbgraph');
 graph.setAccessToken(token);
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
-var url = 'mongodb://localhost:27017/fb';
+var dburl = 'mongodb://cloudman:tarajji1919@ds043714.mongolab.com:43714/fb';
 var feeds = [];
 
 var nb =0 ;
@@ -27,7 +27,7 @@ graph.get(url, function(err, res) {
 });
 };
 
-MongoClient.connect(url, function (err, db) {
+MongoClient.connect(dburl, function (err, db) {
 
    var cursor = db.collection('pages').find({})
 
