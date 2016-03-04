@@ -21,6 +21,16 @@ graph.get(url, function(err, res) {
       else {
              id.forEach(function(item){
              console.log(item.id,'   ',page,'    ',item.created_time);
+             var ins={feed:item.id , date:item.created_time};
+             MongoClient.connect(dburl, function (err, db) {
+              if (err){
+                console.log('Erreur de connexion');
+
+              }else{
+                db.collection('pub').update({id:item.id},ins,{upsert:true});
+              }/// end else;
+             };
+
            })
     };                  
    }
