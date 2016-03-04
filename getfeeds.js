@@ -24,10 +24,13 @@ graph.get(url, function(err, res) {
                 console.log('Erreur de connexion');
 
               }else{
+                var nb=id.length;
                 id.forEach(function(item){
                     console.log(item.id,'   ',page,'    ',item.created_time);
                     var ins={feed:item.id,date:item.created_time};
                     db.collection('pub').update({id:item.id},ins,{upsert:true});
+                    nb--;
+                    if (nb==0)db.close();
               });/// end else;
              };
 
