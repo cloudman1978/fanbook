@@ -17,10 +17,10 @@ graph.get(url, function(err, res) {
      res.data.forEach(function(item) {
                id.push(item);
             });
-     if (typeof res.paging.next === 'defined' && count>0) setTimeout(getFeeds(res.paging.next,page,id,count-1),100)
+     if (res.data.length>0 && count>0) setTimeout(getFeeds(res.paging.next,page,id,count-1),100)
       else {
              id.forEach(function(item){
-             console.log(item);
+             console.log(item.id,'   ',page,'    ',item.created_time);
            })
     };                  
    }
