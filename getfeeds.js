@@ -3,7 +3,7 @@ var graph= require('fbgraph');
 graph.setAccessToken(token);
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
-var dburl = 'mongodb://localhost:27001/fb';
+var dburl = 'mongodb://localhost/fb';
 var feeds = [];
 
 var nb =0 ;
