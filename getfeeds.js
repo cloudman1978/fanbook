@@ -12,6 +12,7 @@ function getFeeds(url,page,id,count){
 
 graph.get(url, function(err, res) {
 
+   if(err)console.log('not connected to FB');
 
    if(!err){
      res.data.forEach(function(item) {
@@ -19,26 +20,14 @@ graph.get(url, function(err, res) {
             });
      if (res.data.length>0 && count>0) setTimeout(getFeeds(res.paging.next,page,id,count-1),100)
       else {
-	MongoClient.connect(dburl, function (err, db) {
-              if (err){
-                console.log('Erreur de connexion');
-
-              }else{
-                var nb=id.length;
                 id.forEach(function(item){
                     console.log(item.id,'   ',page,'    ',item.created_time);
-                    var ins={feed:item.id,date:item.created_time};
-                    db.collection('pub').update({id:item.id},ins,{upsert:true});
-                    nb--;
-                    if (nb==0)db.close();
-              });/// end else;
+                
+                 });
              };
-
-           })
     };                  
-   }
-});
-};
+   });
+}
 
 MongoClient.connect(dburl, function (err, db) {
 
