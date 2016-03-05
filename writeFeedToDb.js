@@ -14,6 +14,6 @@ lineReader.on('line', function (line) {
   var arr = line.split(" ");
   console.log(arr);
   var ins={feed:arr[0],date:arr[2]}
-  db.collection('pub').update(feed:arr[0],ins,{upsert:true});
+  db.collection('pub').update("feed":arr[0],ins,{upsert:true});
 });
 });
