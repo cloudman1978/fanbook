@@ -1,6 +1,6 @@
 var mongoClient=require('mongodb');
 var lineReader = require('readline').createInterface({
-  input: require('fs').createReadStream('recentfeeds')
+  erminal: false,input: require('fs').createReadStream('recentfeeds')
 });
 
 
