@@ -9,7 +9,7 @@ var MongoClient = mongodb.MongoClient;
 var dburl = 'mongodb://localhost/fb';
 
 MongoClient.connect(dburl,function(err,db){
-	//setTimeout(db.close(),1000000);
+	setTimeout(db.close(),1000000);
 lineReader.on('line', function (line) {
   console.log('Line from file:', line);
   var arr = line.split(" ");
