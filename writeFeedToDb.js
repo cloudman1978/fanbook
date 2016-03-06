@@ -23,6 +23,6 @@ readableStream.on('data', function(chunk) {
 
 readableStream.on('end', function() {
     console.log("done");
-    db.close();
+    setTimeout(db.close(),10000);
 });
 });
